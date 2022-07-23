@@ -35,7 +35,8 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, onLoading }) {
       buttonText={onLoading ? `Сохранение` : `Сохранить`}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+      onLoading={onLoading}>
       <label className="form__field form__fild-first">
         <input name="name" className="form__input" id="name-input" type="text" placeholder="имя" minLength="2"
           maxLength="40" required value={name || ''} onChange={handleChangeName} />

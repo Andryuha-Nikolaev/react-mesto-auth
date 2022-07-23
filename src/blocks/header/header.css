@@ -3,7 +3,7 @@
   max-width: 880px;
   padding-top: 45px;
   display: flex;
-  align-items: flex-start;
+  justify-content: space-between;
   border-bottom: 1px solid rgba(54, 54, 54, .7);
   box-sizing: border-box;
 }

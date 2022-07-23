@@ -1,7 +1,7 @@
-# Проектная работа: Место-React (Яндекс.Практикум).
+# Проектная работа: Место-React-Auth (Яндекс.Практикум).
 
 ### О проекте:
-Проектная работа по созданию интерактивной страницы. Реализована возможность редактировать профиль и аватар, добавлять и удалять фотографии, ставить и убирать лайки.  Все изменения сохраняются на сервере Яндекс.Практикум. Проект был портирован на React в рамках 10-11 проектных работ.
+Проектная работа по созданию интерактивной страницы. Реализована возможность редактировать профиль и аватар, добавлять и удалять фотографии, ставить и убирать лайки.  Все изменения сохраняются на сервере Яндекс.Практикум. Проект был портирован на React в рамках 10-11 проектных работ. Реализована регистрация и авторизация пользователей.
 
 ## Технологический стек:
 * Flexbox
@@ -25,12 +25,14 @@
 
 * [проектная 9](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript.-Sprint-9?node-id=0%3A1)
 
+* [проектная 12](https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/JavaScript.-Sprint-12?node-id=4453%3A181)
+
 ## Ссылка на проект
-* [Проект на Github Pages](https://andryuha-nikolaev.github.io/mesto-react/)
+* [Проект на Github Pages](https://andryuha-nikolaev.github.io/react-mesto-auth/)
 
 ## Инструкция для работы с проектом:
 ```
-git clone git@github.com:Andryuha-Nikolaev/mesto-react.git
+git clone git@github.com:Andryuha-Nikolaev/react-mesto-auth.git
 cd mesto-react
 npm install
 npm start

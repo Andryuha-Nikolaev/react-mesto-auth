@@ -33,7 +33,8 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, onLoading }) {
       buttonText={onLoading ? `Сохранение` : `Создать`}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+      onLoading={onLoading}>
       <label className="form__field form__fild-first">
         <input name="name" className="form__input" id="photo-input" type="text" placeholder="Название" minLength="2" maxLength="30" required value={placeName} onChange={handleChangeName} />
         <span className="form__input-error photo-input-error"></span>

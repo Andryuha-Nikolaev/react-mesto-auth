@@ -1,15 +1,9 @@
+import checkResponse from "./utils";
+
 class Api {
   constructor(options) {//конструктор принимает url сервера и заголовки запроса
     this._url = options.baseUrl;
     this._headers = options.headers;
-  }
-
-  // метод проверяет пришел ли ответ от сервера
-  _handleResponse(res) {
-    if (res.ok) {
-      return res.json();//если да, то возвращает полученные данные
-    }
-    return Promise.reject(`Error: ${res.status}`);//иначе возвращает ошибку
   }
 
   // метод изменяет данные профиля на сервере
@@ -21,7 +15,7 @@ class Api {
         name: data.name,//в name передаем значение name объекта, переданного в setUserInfo
         about: data.about//в about передаем значение about объекта, переданного в setUserInfo
       })
-    }).then(this._handleResponse)
+    }).then((res) => checkResponse(res))
   }
 
   // метод изменяет аватар на сервере
@@ -32,7 +26,7 @@ class Api {
       body: JSON.stringify({
         avatar: data.avatar
       })
-    }).then(this._handleResponse)
+    }).then((res) => checkResponse(res))
   }
 
   // метод делает запрос серверу и получает данные профиля
@@ -40,7 +34,7 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       headers: this._headers
-    }).then(this._handleResponse)
+    }).then((res) => checkResponse(res))
   }
 
   // метод получения карточек с сервера
@@ -48,7 +42,7 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
       headers: this._headers
-    }).then(this._handleResponse)
+    }).then((res) => checkResponse(res))
   }
 
   // метод добавления новой карточки на сервер
@@ -60,7 +54,7 @@ class Api {
         name: data.name,
         link: data.link
       })
-    }).then(this._handleResponse)
+    }).then((res) => checkResponse(res))
   }
 
   // метод удаления карточки с сервера
@@ -68,7 +62,7 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
-    }).then(this._handleResponse)
+    }).then((res) => checkResponse(res))
   }
 
   //лайк/дизлайк
@@ -76,8 +70,7 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: `${!isLiked ? 'DELETE' : 'PUT'}`,
       headers: this._headers,
-    })
-    .then(this._handleResponse)
+    }).then((res) => checkResponse(res))
   }
 }
 

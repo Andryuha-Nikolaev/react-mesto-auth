@@ -9,13 +9,13 @@ function PopupWithConfirm({ isOpen, onClose, onSubmit, onLoading, card }) {
 
   return (
     <PopupWithForm
-    name="confirm"
-    title="Удалить?"
-    buttonText={onLoading ? `Удаление...` : `Удалить`}
-    isOpen={isOpen}
-    onClose={onClose}
-    onSubmit={handleSubmit}
-    onLoading={onLoading}>
+      name="confirm"
+      title="Удалить?"
+      buttonText={onLoading ? `Удаление...` : `Удалить`}
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      onLoading={onLoading}>
     </PopupWithForm>
   )
 }

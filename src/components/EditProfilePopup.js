@@ -38,8 +38,17 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, onLoading }) {
       onSubmit={handleSubmit}
       onLoading={onLoading}>
       <label className="form__field form__fild-first">
-        <input name="name" className="form__input" id="name-input" type="text" placeholder="имя" minLength="2"
-          maxLength="40" required value={name || ''} onChange={handleChangeName} />
+        <input
+          name="name"
+          className="form__input"
+          id="name-input"
+          type="text"
+          placeholder="имя"
+          minLength="2"
+          maxLength="40"
+          required
+          value={name || ''}
+          onChange={handleChangeName} />
         <span className="form__input-error name-input-error"></span>
       </label>
       <label className="form__field">

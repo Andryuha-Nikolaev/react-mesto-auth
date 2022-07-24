@@ -2,8 +2,6 @@ import React from 'react';
 import logo from '../images/logo.svg';
 import { Link, useLocation } from 'react-router-dom';
 
-
-
 function Header({ userEmail, onSignOut }) {
   const location = useLocation();
   return (

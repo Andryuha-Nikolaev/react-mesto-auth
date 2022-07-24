@@ -36,11 +36,29 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, onLoading }) {
       onSubmit={handleSubmit}
       onLoading={onLoading}>
       <label className="form__field form__fild-first">
-        <input name="name" className="form__input" id="photo-input" type="text" placeholder="Название" minLength="2" maxLength="30" required value={placeName} onChange={handleChangeName} />
+        <input
+          name="name"
+          className="form__input"
+          id="photo-input"
+          type="text"
+          placeholder="Название"
+          minLength="2"
+          maxLength="30"
+          required
+          value={placeName}
+          onChange={handleChangeName} />
         <span className="form__input-error photo-input-error"></span>
       </label>
       <label className="form__field">
-        <input name="link" className="form__input" id="link-input" type="url" placeholder="Ссылка на картинку" required value={placeLink} onChange={handleChangeUrl} />
+        <input
+          name="link"
+          className="form__input"
+          id="link-input"
+          type="url"
+          placeholder="Ссылка на картинку"
+          required
+          value={placeLink}
+          onChange={handleChangeUrl} />
         <span className="form__input-error link-input-error"></span>
       </label>
     </PopupWithForm>

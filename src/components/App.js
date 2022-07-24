@@ -4,10 +4,7 @@ import ProtectedRoute from './ProtectedRoute';
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-import api from "../utils/Api";
-import CurrentUserContext from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
@@ -15,6 +12,10 @@ import PopupWithConfirm from './PopupWithConfitm';
 import Login from './Login';
 import Register from './Register';
 import InfoTooltip from './InfoTooltip';
+
+import CurrentUserContext from '../contexts/CurrentUserContext';
+
+import api from "../utils/api";
 import * as auth from '../utils/auth';
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [profileEmail, setProfileEmail] = useState('');
@@ -52,26 +53,23 @@ function App() {
   });
 
   useEffect(() => {
-    api.getUserInfo().then((profileInfo) => {
-      setCurrentUser(profileInfo)
-    })
-      .catch((err) => {
-        console.log(err);
+    if (isLoggedIn) {
+      api.getUserInfo().then((profileInfo) => {
+        setCurrentUser(profileInfo)
       })
+        .catch((err) => {
+          console.log(err);
+        })
 
-    api.getCards().then((cardsData) => {
-      setCards(cardsData.map((card) => ({
-        _id: card._id,
-        name: card.name,
-        link: card.link,
-        likes: card.likes,
-        owner: card.owner
-      })))
-    })
-      .catch((err) => {
-        console.log(err);
+      api.getCards().then((cardsData) => {
+        setCards(cardsData)
       })
-  }, []);
+        .catch((err) => {
+          console.log(err);
+        })
+      }
+
+  }, [isLoggedIn]);
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false)
@@ -128,7 +126,7 @@ function App() {
   function handleCardDelete(card) {
     setIsLoading(true);
     api.deleteCard(card._id).then(() => {
-      setCards((state) => state.filter(item => item._id != (card._id)))
+      setCards((state) => state.filter((item) => item._id !== card._id))
       closeAllPopups()
     })
       .catch((err) => {

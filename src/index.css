@@ -8,6 +8,11 @@
 @import url(./blocks/header/__email/header__email.css);
 @import url(./blocks/header/__nav/header__nav.css);
 @import url(./blocks/header/__sign-out/header__sign-out.css);
+@import url(./blocks/header/__content/header__container.css);
+@import url(./blocks/header/__burger-info/header__burger-info.css);
+@import url(./blocks/header/__menu-button/header__menu-button.css);
+@import url(./blocks/header/__burger-info/_opened/header__burger-info_opened.css);
+@import url(./blocks/header/__menu-button/_opened/header__menu-button_opened.css);
 @import url(./blocks/profile/profile.css);
 @import url(./blocks/profile/__add-button/profile__add-button.css);
 @import url(./blocks/profile/__avatar-container/profile__avatar-container.css);

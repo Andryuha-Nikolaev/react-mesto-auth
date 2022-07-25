@@ -1,23 +1,25 @@
 import React, { useEffect } from 'react';
 import PopupWithForm from './PopupWithForm';
+import useForm from '../hooks/useForm';
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, onLoading }) {
-  const avatarRef = React.useRef('');
+  const { enteredValues, errors, handleChange, isFormValid, resetForm } = useForm();
+  // const avatarRef = React.useRef('');
 
-  function handleChangeAvatar() {
-    return avatarRef.current.value;
-  }
+  // function handleChangeAvatar() {
+  //   return avatarRef.current.value;
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
     onUpdateAvatar({
-      avatar: avatarRef.current.value
+      avatar: enteredValues.avatar
     });
   }
 
   useEffect(() => {
-    avatarRef.current.value = '';
-  }, [isOpen]);
+    resetForm()
+  }, [isOpen, resetForm]);
 
   return (
     <PopupWithForm
@@ -27,18 +29,19 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, onLoading }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      onLoading={onLoading}>
+      onLoading={onLoading}
+      isDisabled={!isFormValid}>
       <label className="form__field form__fild-first">
         <input
           name="avatar"
-          className="form__input"
+          className={errors.avatar ? 'form__input form__input_type_error' : "form__input"}
           id="avatar-input"
           type="url"
           placeholder="Ссылка на аватар"
           required
-          ref={avatarRef}
-          onChange={handleChangeAvatar} />
-        <span className="form__input-error avatar-input-error"></span>
+          value={enteredValues.avatar || ''}
+          onChange={handleChange} />
+        <span className="form__input-error avatar-input-error">{errors.avatar}</span>
       </label>
     </PopupWithForm>
   )

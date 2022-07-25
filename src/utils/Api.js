@@ -65,7 +65,7 @@ class Api {
     }).then((res) => checkResponse(res))
   }
 
-  //лайк/дизлайк
+  //лайк-дизлайк
   changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: `${!isLiked ? 'DELETE' : 'PUT'}`,
